@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PvP Dice Game - Soroban</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stellar-sdk/11.1.0/stellar-sdk.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stellar-freighter-api/5.0.0/index.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎲 PvP Dice Game</h1>
+            <p class="subtitle">Powered by Stellar Soroban</p>
+            <div id="wallet-section">
+                <button id="connectBtn" class="btn btn-primary">Connect Wallet</button>
+                <div id="walletInfo" class="wallet-info" style="display: none;">
+                    <span id="walletAddress"></span>
+                    <button id="disconnectWallet" class="btn btn-secondary">Disconnect</button>
+                </div>
+            </div>
+            <div id="status" class="status-message"></div>
+        </header>
+
+        <main>
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="create">Create Game</button>
+                <button class="tab-btn" data-tab="join">Join Game</button>
+                <button class="tab-btn" data-tab="games">My Games</button>
+            </div>
+
+            <div class="tab-content">
+                <div id="create-tab" class="tab-panel active">
+                    <div class="card">
+                        <h2>Create New Game</h2>
+                        <div class="form-group">
+                            <label>Stake Amount (XLM)</label>
+                            <input type="number" id="stakeAmount" placeholder="Enter stake amount" min="1" value="10">
+                        </div>
+                        <button id="createGameBtn" class="btn btn-success">Create Game</button>
+                        <div id="createResult" class="result-message"></div>
+                    </div>
+                </div>
+
+                <div id="join-tab" class="tab-panel">
+                    <div class="card">
+                        <h2>Join Existing Game</h2>
+                        <div class="form-group">
+                            <label>Game ID</label>
+                            <input type="number" id="joinGameId" placeholder="Enter game ID" min="1">
+                        </div>
+                        <button id="joinGameBtn" class="btn btn-success">Join Game</button>
+                        <div id="joinResult" class="result-message"></div>
+                    </div>
+                </div>
+
+                <div id="games-tab" class="tab-panel">
+                    <div class="card">
+                        <h2>My Games</h2>
+                        <div id="gamesList">
+                            <p class="empty-state">No games found. Create or join a game to get started!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="gameModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Game Details</h2>
+                    <div id="modalBody"></div>
+                    <div class="dice-container" id="diceAnimation" style="display: none;">
+                        <div class="dice">🎲</div>
+                        <div class="dice">🎲</div>
+                    </div>
+                    <button id="playGameBtn" class="btn btn-primary" style="display: none;">Roll Dice!</button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Built with ❤️ on Stellar Soroban</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+
+</body>
+</html> 
